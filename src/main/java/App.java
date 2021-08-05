@@ -18,6 +18,21 @@ public class App {
                 }, new HandlebarsTemplateEngine());
 
 
+        get( "/form.hbs", (request, response) -> {
+            return new ModelAndView(new HashMap(), "form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/grreeting-cards", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String recipient = request.queryParams("recipient");
+            String sender = request.queryParams("sender");
+            model.put("recipient", recipient);
+            model.put("sender", sender);
+            return new ModelAndView(new HashMap(), "grreeting-cards.hbs");
+
+                },new HandlebarsTemplateEngine());
+
+
 
 
     }
